@@ -1,0 +1,9 @@
+name = "caffipod-go"
+main = "src/index.js"
+compatibility_date = "2026-10-01"
+workers_dev = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "caffipod-taps"
+database_id = "42b2e8d1-9829-4ea4-90be-cd7ccf3557af"
