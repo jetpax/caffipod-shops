@@ -27,6 +27,31 @@
         "referral": false
       }
     ],
-    "default": []
+    "default": [
+      {
+        "name": "Sightglass",
+        "blurb": "San Francisco",
+        "url": "https://sightglasscoffee.com/collections/coffee",
+        "referral": false
+      },
+      {
+        "name": "Ritual Coffee Roasters",
+        "blurb": "San Francisco",
+        "url": "https://ritualcoffee.com/collection/coffee/",
+        "referral": false
+      },
+      {
+        "name": "Equator Coffees",
+        "blurb": "San Rafael, Marin",
+        "url": "https://www.equatorcoffees.com/collections/coffees",
+        "referral": false
+      },
+      {
+        "name": "Verve Coffee Roasters",
+        "blurb": "Santa Cruz",
+        "url": "https://www.vervecoffee.com/collections/all-coffee",
+        "referral": false
+      }
+    ]
   }
 }
