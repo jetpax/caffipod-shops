@@ -36,15 +36,18 @@ https://jetpax.github.io/caffipod-shops/BeanShops.json
 
 ## Shop links and tap counts
 
-Shop URLs in `BeanShops.json` point at the `caffipod-go` Cloudflare Worker
-(`go/`), e.g. `https://caffipod-go.jetpax.workers.dev/sightglass?src=card`.
-The worker records the tap in the D1 database `caffipod-taps` (time, shop,
-country, `src`; no IP address or device ID) and redirects to the shop's link
-in `redirects.json`, which carries the UTM tags and, later, referral tags.
+Shop URLs in `BeanShops.json` are the shops' own pages, tagged with
+`utm_source=caffipod` so roasters see CaffiPod traffic in their analytics.
+When a shop is tapped, the app opens that URL directly and, in the
+background, sends `https://caffipod-go.jetpax.workers.dev/tap/<slug>?src=card`
+to the `caffipod-go` Cloudflare Worker (`go/`), which records the tap in the
+D1 database `caffipod-taps` (time, shop, country, `src`; no IP address or
+device ID). The user never waits for it, and a failed tap never blocks the
+shop.
 
-- Change where a shop goes: edit `redirects.json` and push (picked up within
-  5 minutes, no redeploy).
-- Add a shop: add it to `redirects.json`, then to `BeanShops.json` with its
-  worker URL.
+- Add a shop: add it to `BeanShops.json` with a short `slug` (lowercase
+  letters, digits, hyphens); the slug names it in the tap log.
 - See taps: `go/taps.sh` (per shop, last 30 days) or `go/taps.sh all`.
 - Change the worker itself: `cd go && npx wrangler deploy`.
+- `redirects.json` and the worker's `/<slug>` redirect only serve links in
+  app builds from before background logging.
